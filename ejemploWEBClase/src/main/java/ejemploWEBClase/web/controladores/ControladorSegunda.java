@@ -4,6 +4,7 @@
 package ejemploWEBClase.web.controladores;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -18,32 +19,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ejemploWEBClase.dtos.DtoAlumno;
-
+import ejemploWEBClase.aplicaciones.dal.DaoAlumno;
+import ejemploWEBClase.aplicaciones.dtos.DtoAlumno;
+import ejemploWEBClase.aplicaciones.impl.ConsultaServicio;
 
 /**
  * @author Talamino
  * 
  */
 
+
 @Controller
 public class ControladorSegunda {
 
+	//@Autowired
+	//ConsultaServicio consultaServicio;
+	
 	protected final Log logger = LogFactory.getLog(getClass());
    
-	/*@RequestMapping(value="/segunda")
-	public ModelAndView gestionSolicitud() {
-		
-		List<DtoAlumno> listAlum = new ArrayList<DtoAlumno>();
-		
-		listAlum.add(new DtoAlumno(1, "Juan Carlos", "Romero", 18, "612768009"));
-		listAlum.add(new DtoAlumno(2, "Pedro", "García", 20, "617868899"));
-		
-	    logger.info("Navegamos a la vista segunda");
-	    Map<String, Object> miModelo = new HashMap<String, Object>();  
-	    miModelo.put("mensajeObjeto1", new DtoAlumno(1, "Juan Carlos", "Romero", 18, "612768009"));
-	    return new ModelAndView("segunda", "miModelo", miModelo);
-	} */
 	
 	@RequestMapping(value="/segunda")
 	public ModelAndView gestionSolicitud() {
@@ -52,7 +45,7 @@ public class ControladorSegunda {
 	} 
 	
 	@PostMapping(value="/form")
-	public ResponseEntity<Void> onPost(@RequestParam("id") int id, 
+	public ResponseEntity<Void> onPost(@RequestParam("id") Integer id, 
 	                   @RequestParam("nombre") String nombre, 
 	                   @RequestParam("apellidos") String apellidos, 
 	                   @RequestParam("edad") int edad, 
@@ -60,15 +53,20 @@ public class ControladorSegunda {
 	    
 		
 	    // Crea un objeto Registro con los datos recogidos
-	    DtoAlumno alumno = new DtoAlumno(id, nombre, apellidos, edad, tlf);
+	    DaoAlumno alumno = new DaoAlumno(id, nombre, apellidos, edad, tlf);
+	    
+	    //Paso del DTO a DAO
 	    
 	    
 	    //Log para ver que se ha guardado
 	    logger.info("Registro recibido: " + alumno);
+	    
+	    // Guarda el objeto en la base de datos
+	    //ssconsultaServicio.insertarAlumno(alumno);
 	    
 	    return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
 
-
+      

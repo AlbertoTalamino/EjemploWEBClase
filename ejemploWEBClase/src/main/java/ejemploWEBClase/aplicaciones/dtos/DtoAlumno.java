@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ejemploWEBClase.dtos;
+package ejemploWEBClase.aplicaciones.dtos;
 
 /**
  * @author Talamino
@@ -9,14 +9,13 @@ package ejemploWEBClase.dtos;
  */
 public class DtoAlumno {
 
-	//Propiedades
+	// Propiedades
 	int id;
 	String nombre;
 	String apellidos;
 	int edad;
 	String tlf;
 
-	
 	/**
 	 * Constructor normal
 	 *
@@ -34,7 +33,7 @@ public class DtoAlumno {
 		this.edad = edad;
 		this.tlf = tlf;
 	}
-	
+
 	/**
 	 * Constructor vacio
 	 */
@@ -42,41 +41,48 @@ public class DtoAlumno {
 		super();
 	}
 
-
-	//GETTERS AND SETTERS
+	// GETTERS AND SETTERS
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellidos() {
 		return apellidos;
 	}
+
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+
 	public int getEdad() {
 		return edad;
 	}
+
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+
 	public String getTlf() {
 		return tlf;
 	}
+
 	public void setTlf(String tlf) {
 		this.tlf = tlf;
 	}
-	
-	
-	//ToString (Metodo que hace legible a la clase)
+
+	// ToString (Metodo que hace legible a la clase)
 	@Override
 	public String toString() {
 		return "DtoAlumno [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + ", tlf="
